@@ -1,0 +1,41 @@
+Form Handling
+//===============================================
+var form = document.querySelector('form');
+form.addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent the default submit behaviour
+    var nameInput = document.getElementById("name");
+    if (validateName(nameInput)) {
+        sendFormData(getFormData());
+        } else {
+            alert("Please enter a valid name.");
+            };
+            });
+            function getFormData() {
+                return {
+                    "name": document.getElementById("name").value,
+                    "email": document.getElementById("email").value,
+                    "message": document.getElementById("message").value
+                    };
+                    }
+                    function validateName(inputField) {
+                        var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a
+                        -zA-Z]*)*$/;
+                        if (!regex.test(inputField.value)) {
+                            return false;
+                            } else {
+                                return true;
+                                }
+                                }
+                                function showLoading(){
+                                    var loading = document.createElement("div");
+                                    loading.className = "loading";
+                                    document.body.appendChild(loading);
+                                    setTimeout(function(){document.body.removeChild(loading)}, 3000);
+                                    }
+                                    //Send Data to Server
+                                    function sendFormData(data, url) {
+                                        showLoading();
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open("POST", 'https://script.google.com/macros/s/AKfycbx5
+                                        12YV6_dIr9iJhWzj8eTlLbBQHG7
+                                        
